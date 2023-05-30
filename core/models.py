@@ -11,6 +11,9 @@ class Property(models.Model):
     base_price = models.FloatField(null=True, blank=True)
     """base_price: base price of the property per day"""
 
+    def __str__(self):
+        return self.name
+
 
 class PricingRule(models.Model):
     """
@@ -45,3 +48,6 @@ class Booking(models.Model):
     """date_end: Last date of the booking"""
     final_price = models.FloatField(null=True, blank=True)
     """final_price: Calculated final price"""
+
+    def __str__(self):
+        return f"{self.date_start} - {self.date_end} / {self.property.name[:25]} / {self.final_price}"
